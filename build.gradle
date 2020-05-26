@@ -1,0 +1,29 @@
+task projectx {
+	ext {
+		name = 'Project X'
+		email = 'support@projectx.com'
+		version = '1.0'
+	}
+}
+
+task compile {
+	doLast {
+		println "******************************************"
+		println "Im compiling ${projectx.name.capitalize()} ${projectx.version}"
+		println "If there are errors, please contact ${projectx.email}"
+		println "******************************************"
+	}
+}
+
+task executeUnitTest {
+	
+	dependsOn 'compile'
+
+	String name = "Testing ViewModels"
+	Date date = new Date()
+	doLast {
+		println "Executing unit test..."
+		println "Test name: $name"
+		println "Hour: $date"
+	}
+}
